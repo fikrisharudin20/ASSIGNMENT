@@ -1,8 +1,8 @@
 # Alien vs. Zombie
 
-Please introduce the game here.
+My group had developed the a C++ program that simulates a game called "Alien Vs Zombies".
 
-You may add one signature screenshot of your program here or above the title. Check out [this tutorial](https://www.digitalocean.com/community/tutorials/markdown-markdown-images) to learn how to do it.
+![Alt text](https://images-na.ssl-images-amazon.com/images/S/pv-target-images/85bf4bc8849e7f981c06c26c4c82ffaa517267bd07d221b081b2c4a7adee1270._RI_.jpg)
 
 Please provide the YouTube link to your [Video Demo](https://youtube.com).
 
