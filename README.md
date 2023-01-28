@@ -2,15 +2,19 @@
 
 My group had developed the a simple C++ program that simulates a game called "Alien Vs Zombies".
 
-![Alt text](https://freeimage.host/i/H0snFKg "Title Screen")
+![Alt text](https://imgtr.ee/images/2023/01/28/G57Ur.jpg "Title Screen")
 
-The game starts by displaying the title of the game and then prompts the user to enter the number of rows and columns of the game board. The game board is displayed using a loop that iterates through each row and column, printing out the game board and the current position of the alien character represented by "A". The alien is also placed in the middle of the board according the to the user's preference of the board's dimension
+The game starts by displaying the title of the game and then prompts the user to enter the number of rows and columns of the game board. The game board is displayed using a 
 
-![Alt text](https://freeimage.host/i/H0sCLPe "Prompting User for Dimensions")
+loop that iterates through each row and column, printing out the game board and the current position of the alien character represented by "A". The alien is also placed in 
 
-The user will be playing as the alien and the controls are also prompted on the screen 
+the middle of the board according the to the user's preference of the board's dimension
 
-The goal of this game is to eliminate the all zombies on the board in order to win! *Goodluck Aliens!*
+![Alt text](https://imgtr.ee/images/2023/01/28/G5GTn.jpg "Prompting User for Dimensions")
+
+The user will be playing as the alien and the controls are also prompted on the screen.
+
+The goal of this game is to eliminate the all zombies on the board in order to win! Goodluck Aliens!
 
 Please provide the YouTube link to your [Video Demo](https://youtube.com).
 
