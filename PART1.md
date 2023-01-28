@@ -18,8 +18,8 @@ List all the features completed.
 
 List all the features not yet done. Remove this section if there is no incomplete requirements.
 
-1. Cool Feature #1
-2. *add more*
+1. Randomized objects
+2. Game Flow
 
 ## Additional Features
 
