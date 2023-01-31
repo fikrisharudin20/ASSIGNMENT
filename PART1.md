@@ -52,7 +52,9 @@ List down the contribution of each group members.
 
 1. The first problem that we had encountered was figuring out how to randomize the objects on the game board as everytime the Alien moves, the objects in the board will be randomized again. 
 
-Our plans to overcome : a. Defining the arrays with the objects outside of the loop of gameboard.
+Our plans to overcome : 
+
+                        a. Defining the arrays with the objects outside of the loop of gameboard.
                         Explanation : As our board-creation code has a system("clear") function, it might intertwine with the objects in the arrays 
 
                         b.  Using the shuffle function 
@@ -61,27 +63,27 @@ Our plans to overcome : a. Defining the arrays with the objects outside of the l
 
 
 ## Tasks for Group Members (UPDATE IF DONE)
-1. Fikri - Game Board Creation 
-            a. Customizable (DONE)
-            b. Must be odd numbers for row and columns (DONE)
+1. Fikri - Game Board Creation <br>
+            1. Customizable (DONE) <br>
+            2. Must be odd numbers for row and columns (DONE)
 
-2. Izzati - Game Characters
-            a. Attributes (  )
-            b. Movement and attack (  )
+2. Izzati - Game Characters <br>
+            a. Attributes (  ) <br>
+            b. Movement and attack (  ) <br>
 
-3. Yusriena - Game Objects 
-            a. Create 2D-array with game objects (DONE)
-            b. Randomize objects on board(   )
+3. Yusriena - Game Objects <br>
+            a. Create 2D-array with game objects (DONE) <br>
+            b. Randomize objects on board(   ) <br>
 
-4. Fikri - Game Controls
-            a. Movement of alien (DONE)
-            b. Saving and Loading commands (  )
+4. Fikri - Game Controls <br>
+            a. Movement of alien (DONE) <br>
+            b. Saving and Loading commands (  ) <br>
 
-5. Yusriena - Saving and Loading
-            a. write C++ file for saving(  )
+5. Yusriena - Saving and Loading <br>
+            a. write C++ file for saving(  )<br>
 
-6. Izzati - Game Flow
-            a. Make sure the game flow is okay (  )
+6. Izzati - Game Flow<br>
+            a. Make sure the game flow is okay (  )<br>
 
 Note to all members : Always update documentation.
 

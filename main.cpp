@@ -132,8 +132,7 @@ void board()
 
                     }
                  
-                    
-                    
+        
                 else if (move == 's' && a_y < y - 1)
                     {
 
@@ -141,7 +140,6 @@ void board()
 
                     }
                     
-                
                 else if (move == 'a' && a_x > 0)
                     {
                         a_x--;
