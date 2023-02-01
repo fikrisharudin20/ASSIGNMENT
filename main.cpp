@@ -16,7 +16,6 @@
 #include <iomanip>
 #include <algorithm>
 #include <random>
-#include <conio.h>
 
 using namespace std;
 
