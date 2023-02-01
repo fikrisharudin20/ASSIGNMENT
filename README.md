@@ -19,19 +19,27 @@ Please provide the YouTube link to your [Video Demo](https://youtube.com).
 
 ## Compilation Instructions
 
-Provide instructions on how to compile your program, especially when it is non-trivial.
-
-For example:
-
 ```
-g++ main.cpp folder1\code.cpp folder2\code.cpp ......
+g++ main.cpp -o alienvszombie
 ```
 
 ## User Manual
 
-Please provide the user manual on how to use your program.
+After compiling the program, type in;
 
-Please DO NOT change the Progress Log below. Leave it as it is.
+```
+.\alienvszombie
+```
+
+The player will be prompted with the title screen and it will request two inputs for the user; row and columns which are y-dimensions and x-dimensions respectively.
+*Note: it is way more suitable to play with dimensions where columns > rows* 
+
+Eitherway, the user can set their own preferable dimensions for the board.
+
+The "A" character is placed in the middle of the board and it can be moved with wasd keys which are up,left,down and right respectively.
+
+The user can also put in a series of inputs such as "wwww" and it will move 4 times up.
+
 
 ## Progress Log
 
@@ -44,6 +52,6 @@ Please replace the following with your group members' names.
 
 - Ahmad Fikri Bin Sharudin
 - Yusriena Aqielah Binti Muhammad Nafiz Hans
-- Izzati
+- Nurhazirah Izzati Binti Abd Latif
 
 

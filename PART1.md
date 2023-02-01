@@ -12,7 +12,6 @@ List all the features completed.
 
 1. Customizable Gameboard
 2. Movement of Alien
-3. *add more*
 
 ### To Do
 
@@ -37,16 +36,17 @@ List down the contribution of each group members.
 
 1. Created the gameboard with modifiable dimensions
 2. Created the controls of the Alien 
+3. Documentation
 
 ### Yusriena Aqielah Binti Muhammad Nafiz Hans
 
-1. Zombie movement and attack behaviour.
-2. *add more*
+1. 2D Array with objects for the gameboard
+2. Made script for the video demo
 
 ### Nurhazirah Izzati Binti Abd Latif
 
-1. Implement all game objects.
-2. *add more*
+1. Made sure it can be compiled and debugging
+2. Edited the video demo
 
 ## Problems Encountered & Solutions
 
@@ -55,37 +55,11 @@ List down the contribution of each group members.
 Our plans to overcome : 
 
                         a. Defining the arrays with the objects outside of the loop of gameboard.
-                        Explanation : As our board-creation code has a system("clear") function, it might intertwine with the objects in the arrays 
+                        Explanation : As our board-creation code has a system(cls) function, it might intertwine with the objects in the arrays 
 
                         b.  Using the shuffle function 
                         Explanation : We might opt for shuffle function as it can shuffle the elements in the array randomly 
 
-
-
-## Tasks for Group Members (UPDATE IF DONE)
-1. Fikri - Game Board Creation <br>
-            1. Customizable (DONE) <br>
-            2. Must be odd numbers for row and columns (DONE)
-
-2. Izzati - Game Characters <br>
-            a. Attributes (  ) <br>
-            b. Movement and attack (  ) <br>
-
-3. Yusriena - Game Objects <br>
-            a. Create 2D-array with game objects (DONE) <br>
-            b. Randomize objects on board(   ) <br>
-
-4. Fikri - Game Controls <br>
-            a. Movement of alien (DONE) <br>
-            b. Saving and Loading commands (  ) <br>
-
-5. Yusriena - Saving and Loading <br>
-            a. write C++ file for saving(  )<br>
-
-6. Izzati - Game Flow<br>
-            a. Make sure the game flow is okay (  )<br>
-
-Note to all members : Always update documentation.
 
 
             
