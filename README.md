@@ -15,7 +15,7 @@ The user will be playing as the alien and the controls are also prompted on the 
 
 The goal of this game is to eliminate the all zombies on the board in order to win! Goodluck Aliens!
 
-Please provide the YouTube link to your [Video Demo](https://youtube.com).
+[Video Demo](https://www.youtube.com/watch?v=B2DL_4otjsA).
 
 ## Compilation Instructions
 

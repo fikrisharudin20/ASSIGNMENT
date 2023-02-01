@@ -2,7 +2,7 @@
 
 ## Video Demo
 
-Please provide the YouTube link to your [Video Demo](https://youtube.com).
+[Video Demo](https://www.youtube.com/watch?v=B2DL_4otjsA).
 
 ## Minimum Requirements
 
@@ -45,8 +45,9 @@ List down the contribution of each group members.
 
 ### Nurhazirah Izzati Binti Abd Latif
 
-1. Made sure it can be compiled and debugging
-2. Edited the video demo
+1. Made sure it can be compiled 
+2. Debugging
+3. Edited the video demo
 
 ## Problems Encountered & Solutions
 
