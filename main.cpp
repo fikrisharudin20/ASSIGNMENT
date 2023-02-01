@@ -2,10 +2,10 @@
 // Course: TCP1101 PROGRAMMING FUNDAMENTALS 
 // Year: Trimester 1, 2022/23 (T2215) 
 // Lab: TT1L 
-// Names: AHMAD FIKRI BIN SHARUDIN | YUSRIENA AQIELAH BINTI MUHAMMAD NAFIZ HANS | MEMBER_NAME_3 
-// IDs: 1221302093 | 1221302876 | MEMBER_ID_3 
-// Emails: 1221302093@student.mmu.edu.my | 1221302876@student.mmu.edu.my | MEMBER_EMAIL_3 
-// Phones: 0197581622 | 0183740376 | MEMBER_PHONE_3 
+// Names: AHMAD FIKRI BIN SHARUDIN | YUSRIENA AQIELAH BINTI MUHAMMAD NAFIZ HANS | NURHAZIRAH IZZATI BINTI ABD LATIF
+// IDs: 1221302093 | 1221302876 | 1221302792 
+// Emails: 1221302093@student.mmu.edu.my | 1221302876@student.mmu.edu.my | 1221302792@student.mmu.edu.my
+// Phones: 0197581622 | 0183740376 | 0133330437
 // ********************************************************* 
 
 #include "pf/helper.h"
@@ -26,7 +26,7 @@ int a_x;
 int a_y;
 
 
-void title()
+void title()                                      //Creating the title of the game 
 {
     cout << "*~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~*" << endl;
     cout << " *    | ALIEN VS ZOMBIES |     * " << endl;
@@ -39,13 +39,13 @@ void title()
 
 void board()
 {
-    cout << "Hello young alien! set your rows and columns (odd numbers only)" << endl;
+    cout << "Hello aliens! set your rows and columns (odd numbers only)" << endl; 
     
     char again = 'Y';
 
-    while (again == 'y' || again == 'Y')
+    while (again == 'y' || again == 'Y')         //A while-loop to create the board 
     {
-        cout << "Row => ";
+        cout << "Row => ";                       //Initializing the dimensions of the board set by user's input
         cin >> y;
         cout << "" << endl;
 
@@ -53,10 +53,10 @@ void board()
         cin >> x;
         cout << "" << endl;
 
-        if (x, y % 2 != 0)
+        if (x, y % 2 != 0)                       //Inside of while-loop there is an if else statement if the user inputs even numbers for the dimensions of the board
         {
-            again = 'N';
-            a_x = x / 2;
+            again = 'N';         
+            a_x = x / 2;                        //When the board is created with set dimensions, put the Alien in the middle of the board
             a_y = y / 2;
 
 
@@ -67,24 +67,24 @@ void board()
             {
 
                 cout << " ";
-                for (int col = 0; col < x; col++)
+                for (int col = 0; col < x; col++)         //Top border of the board
                 {
-                    cout << "=-";
+                    cout << "=-";                          
                 }
                 cout << "=" << endl;
 
-                cout << setw(2) << (y - row);
+                cout << setw(2) << (y - row);            // Y-coordinates of the side of the board with set width of 2
 
 
 
                 for (int j = 0; j < x; ++j)
                 {
-                    string array[] = {"p", "h", "r", "<", ">", "^", "v", " ", " ", " ", " ", " ", " ", " ", " "};
+                    string array[] = {"p", "h", "r", "<", ">", "^", "v", " ", " ", " ", " ", " ", " ", " ", " "};          //2d array for the objects in the board
                     int noOfObjects = 15;
                     
 
                     if (row == a_y && j == a_x)
-                        cout << "|A";
+                        cout << "|A";                   //Put alien in the middle of the board
                     
                     else
                         cout << "|" << " ";
@@ -94,16 +94,16 @@ void board()
             }
 
             cout << " ";
-            for (int j = 0; j < x; ++j)
+            for (int j = 0; j < x; ++j)                 //Bottom border of the board
             {
-                cout << "=-";
+                cout << "=-";                           
             }
             cout << "=" << endl;
 
-            cout << " ";
+            cout << " ";                               //X-coordinates on the bottom of the board
             for (int j = 0; j < x; ++j)
             {
-                int digit = (j + 1) / 10;
+                int digit = (j + 1) / 10;             
                 cout << " ";
                 if (digit == 0)
                     cout << " ";
@@ -122,41 +122,36 @@ void board()
             cout << endl
                  << endl;
 
-                  char move;
+                  char move;                                                                                  //Code for Alien movement
                   cout << "Enter your move (w = up, s = down, a = left, d = right, q = quit)"<< endl;
                   cin >> move;
                 
-                if (move == 'w' && a_y > 0)
+                if (move == 'w'  && a_y > 0)
                     {
                         a_y--;
-
                     }
                  
         
                 else if (move == 's' && a_y < y - 1)
                     {
-
                         a_y++;
-
                     }
                     
                 else if (move == 'a' && a_x > 0)
                     {
                         a_x--;
-
                     }
                 
                 else if (move == 'd' && a_x < x - 1)
                     {
                         a_x++;
-
                     }
                     
                     
                 else if (move == 'q')
 
                 {
-                  string confirm;
+                  string confirm;                                       //If the user wants to quit the game
                   cout << "Are you sure? (yes or no) => ";
                   cin >> confirm;
 
@@ -194,7 +189,7 @@ void board()
         }
 
         else    
-            cout << "Young one, we only accept odd numbers!" << endl;
+            cout << "Young one, we only accept odd numbers!" << endl;                   //Display if user inputs even numbers for board dimensions
         cout << "" << endl;
         system("pause");
     }
@@ -202,7 +197,7 @@ void board()
 
 }
 
-int main()
+int main()                                                                                                  
 {
     
     title();

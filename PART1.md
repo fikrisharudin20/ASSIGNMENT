@@ -27,7 +27,7 @@ List all the features not yet done. Remove this section if there is no incomplet
 ## Additional Features
 
 1. For a more user-friendly experience, we had decided on making the movement of the Alien as strings instead of one output, therefore, if the user
-inputs, (up,up,up,up), the alien will move up four times without the hassle of typing out each input. 
+inputs, (w,w,w,w), the alien will move up four times without the hassle of typing out each input. 
 
 ## Contributions
 
@@ -43,7 +43,7 @@ List down the contribution of each group members.
 1. Zombie movement and attack behaviour.
 2. *add more*
 
-### Dr. Strange
+### Nurhazirah Izzati Binti Abd Latif
 
 1. Implement all game objects.
 2. *add more*
