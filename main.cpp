@@ -16,7 +16,6 @@
 #include <iomanip>
 #include <algorithm>
 #include <random>
-#include <conio.h>
 
 using namespace std;
 
@@ -24,6 +23,7 @@ int x;
 int y;
 int a_x;
 int a_y;
+
 
 
 void title()                                      //Creating the title of the game 
@@ -124,27 +124,35 @@ void board()
 
                   char move;                                                                                  //Code for Alien movement
                   cout << "Enter your move (w = up, s = down, a = left, d = right, q = quit)"<< endl;
+                  int x_coords = a_x + 1;
+                  int y_coords = y - a_y;
+                  cout << "Alien is now at (" << x_coords << ", " << y_coords << ")" << endl;  
                   cin >> move;
+                  
                 
                 if (move == 'w'  && a_y > 0)
                     {
                         a_y--;
+                        cout << "Alien moved up to (" << x_coords << ", " << y_coords + 1 << ")" << endl;
                     }
                  
         
                 else if (move == 's' && a_y < y - 1)
                     {
                         a_y++;
+                        cout << "Alien moved down to (" << x_coords << ", " << y_coords - 1 << ")" << endl;
                     }
                     
                 else if (move == 'a' && a_x > 0)
                     {
                         a_x--;
+                        cout << "Alien moved left to (" << x_coords - 1 << ", " << y_coords << ")" << endl;
                     }
                 
                 else if (move == 'd' && a_x < x - 1)
                     {
                         a_x++;
+                        cout << "Alien moved right to (" << x_coords + 1 << ", " << y_coords << ")" << endl;
                     }
                     
                     
