@@ -112,6 +112,7 @@ int x;
 int y;
 int a_x;
 int a_y;
+int alien_health = 100;
 
 void title() // Creating the title of the game
 {
@@ -223,7 +224,16 @@ void board()
                 cout << endl
                      << endl;
 
-                // Code for Alien movement
+                
+                // Code for Alien movement and for board objects
+                
+                int alien_new_health = alien_health;
+                int alien_damage = 0;
+                  cout << "Alien Health (" << alien_new_health << ")"
+                     << "  "
+                     << "Alien Damage (" << alien_damage << ")" << endl;
+               
+                
                 char move;
                 cout << "Enter your move (w = up, s = down, a = left, d = right, q = quit)" << endl;
                 int x_coords = a_x + 1;
@@ -239,6 +249,16 @@ void board()
                     {
                         if (boardObjects[a_y - 1][a_x] != "r") // check if the next position is a rock
                         {
+                            if (boardObjects[a_y - 1][a_x] == "h") // check if the next position is a health object
+                            {
+                                if (alien_health < 100)
+                                {
+                                 alien_health += 20; // increase alien health by 20
+                                 int alien_new_health = alien_health;
+                                 cout << "Alien gained 20 health points!" << endl;
+                                }
+                                
+                            }
                             // move Alien up
                             boardObjects[a_y][a_x] = " "; // clear current position
                             a_y--;
@@ -246,7 +266,6 @@ void board()
                         }
 
                         else // stop moving if the next position is a rock
-
                         {
                             cout << "Ouchies! You hit a rock" << endl;
                             break;
@@ -262,6 +281,16 @@ void board()
                     {
                         if (boardObjects[a_y + 1][a_x] != "r") // check if the next position is a rock
                         {
+                            if (boardObjects[a_y + 1][a_x] == "h") // check if the next position is a health object
+                            {
+                                if (alien_health < 100)
+                                {
+                                 alien_health += 20; // increase alien health by 20
+                                int alien_new_health = alien_health;
+                                cout << "Alien gained 20 health points!" << endl;
+                                }
+                            }
+
                             boardObjects[a_y][a_x] = " "; // clear current position
                             a_y++;
                             boardObjects[a_y][a_x] = "A"; // update new position
@@ -282,6 +311,16 @@ void board()
                     {
                         if (boardObjects[a_y][a_x - 1] != "r") // check if the next position is a rock
                         {
+                            if (boardObjects[a_y][a_x - 1] == "h") // check if the next position is a health object
+                            {
+                                if (alien_health < 100)
+                                {
+                                 alien_health += 20; // increase alien health by 20
+                                int alien_new_health = alien_health;
+                                cout << "Alien gained 20 health points!" << endl;
+                                }
+                            }
+
                             boardObjects[a_y][a_x] = " "; // clear current position
                             a_x--;
                             boardObjects[a_y][a_x] = "A"; // update new position
@@ -302,6 +341,16 @@ void board()
                     {
                         if (boardObjects[a_y][a_x + 1] != "r") // check if the next position is a rock
                         {
+                            if (boardObjects[a_y][a_x + 1] == "h")
+                            {
+                                if (alien_health < 100)
+                                {
+                                 alien_health += 20; // increase alien health by 20
+                                int alien_new_health = alien_health;
+                                cout << "Alien gained 20 health points!" << endl;
+                                }
+                            }
+
                             boardObjects[a_y][a_x] = " "; // clear current position
                             a_x++;
                             boardObjects[a_y][a_x] = "A"; // update new position
@@ -351,6 +400,8 @@ void board()
         system("pause");
     }
 }
+
+
 
 int main()
 {
