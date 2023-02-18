@@ -11,8 +11,8 @@
 #include "pf/helper.h"
 #include <iostream>
 #include <vector>
-#include <cstdlib>
-#include <ctime>
+#include <cstdlib>  // for rand()
+#include <ctime>    // for time()
 #include <iomanip>
 #include <algorithm>
 #include <random>
@@ -193,7 +193,7 @@ void board()
         system("pause");
     }
     
-
+    
 }
 
 int main()                                                                                                  
@@ -202,5 +202,40 @@ int main()
     title();
 
     board();
-    
+}
+
+class GameObject
+{
+public:
+    int x, y;
+    char type;
+
+    GameObject (int x_, int y_, char type_ ) : x(x_), y(y_), type(type_) {}
+};
+
+int main()
+{
+    // create game objects
+    GameObject up_arrow (0,0, '^');
+    GameObject down_arrow (1,0, 'v');
+    GameObject left_arrow (2,0, '<');
+    GameObject right_arrow (3,0, '>');
+    GameObject health (4,0, 'h');
+    GameObject pod (5, 0, 'p');
+    GameObject rock (6, 0, 'r');
+    GameObject empty (7, 0, ' ');
+    GameObject trail (8, 0, '.');
+
+    //print game objects
+    std :: cout << "up_arrow: (" << up_arrow.x << "," << up_arrow.y << ") " << up_arrow.type << std :: endl;
+    std::cout << "Down arrow: (" << down_arrow.x << "," << down_arrow.y << ") " << down_arrow.type << std::endl;
+    std::cout << "Left arrow: (" << left_arrow.x << "," << left_arrow.y << ") " << left_arrow.type << std::endl;
+    std::cout << "Right arrow: (" << right_arrow.x << "," << right_arrow.y << ") " << right_arrow.type << std::endl;
+    std::cout << "Health: (" << health.x << "," << health.y << ") " << health.type << std::endl;
+    std::cout << "Pod: (" << pod.x << "," << pod.y << ") " << pod.type << std::endl;
+    std::cout << "Rock: (" << rock.x << "," << rock.y << ") " << rock.type << std::endl;
+    std::cout << "Empty: (" << empty.x << "," << empty.y << ") " << empty.type << std::endl;
+    std::cout << "Trail: (" << trail.x << "," << trail.y << ") " << trail.type << std::endl;
+
+    return 0;
 }
