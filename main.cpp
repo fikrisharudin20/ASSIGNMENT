@@ -16,6 +16,7 @@
 #include <iomanip>
 #include <algorithm>
 #include <random>
+#include <fstream>
 
 using namespace std;
 
@@ -23,7 +24,6 @@ int x;
 int y;
 int a_x;
 int a_y;
-
 
 void title() // Creating the title of the game
 {
@@ -37,14 +37,14 @@ void title() // Creating the title of the game
 
 void board()
 {
-    
+
     cout << "Hello aliens! set your rows and columns (odd numbers only)" << endl;
 
     char again = 'Y';
 
     while (again == 'y' || again == 'Y') // A while-loop to create the board
     {
-       
+
         cout << "Row => "; // Initializing the dimensions of the board set by user's input
         cin >> y;
         cout << "" << endl;
@@ -59,12 +59,36 @@ void board()
             a_x = x / 2; // When the board is created with set dimensions, put the Alien in the middle of the board
             a_y = y / 2;
 
+            vector<string> objects = {"p", "h", "r", "<", ">", "^", "v", " ", " ", " ", " ", " ", " ", " ", " "};
+            shuffle(objects.begin(), objects.end(), default_random_engine(time(NULL))); // shuffle the objects
+
+            // Create a 2D array to store the objects
+
+            string **boardObjects = new string *[y];
+            for (int i = 0; i < y; i++)
+            {
+                boardObjects[i] = new string[x];
+            }
+
+            for (int i = 0; i < y; i++)
+            {
+                for (int j = 0; j < x; j++)
+                {
+                    if (i == a_y && j == a_x)
+                        boardObjects[i][j] = "A"; // Put alien in the middle of the board
+                    else
+                    {
+                        boardObjects[i][j] = objects[(i * x + j) % objects.size()]; // get the object at a specific index in the shuffled objects vector
+                    }
+                }
+            }
+
             while (true)
             {
 
                 for (int row = 0; row < y; row++)
                 {
-                     
+
                     cout << " ";
                     for (int col = 0; col < x; col++) // Top border of the board
                     {
@@ -76,17 +100,8 @@ void board()
 
                     for (int j = 0; j < x; ++j)
                     {
-                        string array[] = {"p", "h", "r", "<", ">", "^", "v", " ", " ", " ", " ", " ", " ", " ", " "}; // 2d array for the objects in the board
-                        int noOfObjects = 15; // number of objects in the objects array
-                        
-                        if (row == a_y && j == a_x)
-                            cout << "|A"; // Put alien in the middle of the board
 
-                        else
-                        {
-
-                            cout << "|" << " ";
-                        }
+                        cout << "|" << boardObjects[row][j];
                     }
                     cout << "|" << endl;
                 }
@@ -120,7 +135,8 @@ void board()
                 cout << endl
                      << endl;
 
-                char move; // Code for Alien movement
+                // Code for Alien movement
+                char move; 
                 cout << "Enter your move (w = up, s = down, a = left, d = right, q = quit)" << endl;
                 int x_coords = a_x + 1;
                 int y_coords = y - a_y;
@@ -129,27 +145,34 @@ void board()
 
                 if (move == 'w' && a_y > 0)
                 {
-
+                    // move Alien up
+                    boardObjects[a_y][a_x] = " "; // clear current position
                     a_y--;
-                    cout << "Alien moved up to (" << x_coords << ", " << y_coords + 1 << ")" << endl;
+                    boardObjects[a_y][a_x] = "A"; // update new position
                 }
 
                 else if (move == 's' && a_y < y - 1)
                 {
+                    // move Alien down
+                    boardObjects[a_y][a_x] = " "; // clear current position
                     a_y++;
-                    cout << "Alien moved down to (" << x_coords << ", " << y_coords - 1 << ")" << endl;
+                    boardObjects[a_y][a_x] = "A"; // update new position
                 }
 
                 else if (move == 'a' && a_x > 0)
                 {
+                    // move Alien left
+                    boardObjects[a_y][a_x] = " "; // clear current position
                     a_x--;
-                    cout << "Alien moved left to (" << x_coords - 1 << ", " << y_coords << ")" << endl;
+                    boardObjects[a_y][a_x] = "A"; // update new position
                 }
 
                 else if (move == 'd' && a_x < x - 1)
                 {
+                    // move Alien right
+                    boardObjects[a_y][a_x] = " "; // clear current position
                     a_x++;
-                    cout << "Alien moved right to (" << x_coords + 1 << ", " << y_coords << ")" << endl;
+                    boardObjects[a_y][a_x] = "A"; // update new position
                 }
 
                 else if (move == 'q')
@@ -192,7 +215,99 @@ void board()
 
 int main()
 {
-    
+
+    srand(time(NULL));
     title();
     board();
+
+    return 0;
+}
+
+
+// Define a struct to hold game data
+struct GameData
+{
+    int score;
+    string playerName;
+    // Add any other necessary game data
+};
+
+// Function to save game data to a file
+void saveGame(const GameData &gameData)
+{
+    ofstream file("saved_game.txt");
+    if (file.is_open())
+    {
+        file << gameData.score << endl;
+        file << gameData.playerName << endl;
+        // Add any other necessary game data to file
+        cout << "Game saved successfully." << endl;
+    }
+    else
+    {
+        cout << "Unable to save game." << endl;
+    }
+}
+
+// Function to load game data from a file
+GameData loadGame()
+{
+    GameData gameData;
+    ifstream file("saved_game.txt");
+    if (file.is_open())
+    {
+        file >> gameData.score;
+        file >> gameData.playerName;
+        // Load any other necessary game data from file
+        cout << "Game loaded successfully." << endl;
+    }
+    else
+    {
+        cout << "Unable to load game." << endl;
+    }
+    return gameData;
+}
+
+void save()
+{
+    // Initialize game data
+    GameData gameData{0, "Player1"};
+
+    // Play the game
+    while (true)
+    {
+        // Update game data as necessary
+        // ...
+
+        // Allow player to save or quit the game
+        cout << "Enter 's' to save the game or 'q' to quit: ";
+        char choice;
+        cin >> choice;
+        if (choice == 's')
+        {
+            saveGame(gameData);
+        }
+        else if (choice == 'q')
+        {
+            break; // End game
+        }
+    }
+
+    // Allow player to load saved game
+    cout << "Do you want to load a saved game? (y/n): ";
+    char choice;
+    cin >> choice;
+    if (choice == 'y')
+    {
+        cout << "Loading game..." << endl;
+        GameData loadedData = loadGame();
+        // Use loadedData to resume game
+        // ...
+    }
+    else
+    {
+        cout << "Starting new game..." << endl;
+        // Start a new game
+        // ...
+    }
 }
