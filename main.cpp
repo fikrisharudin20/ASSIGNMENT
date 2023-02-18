@@ -20,6 +20,94 @@
 
 using namespace std;
 
+// Define a struct to hold game data
+struct GameData
+{
+    int score;
+    string playerName;
+    // Add any other necessary game data
+};
+
+// Function to save game data to a file
+void saveGame(const GameData &gameData)
+{
+    ofstream file("saved_game.txt");
+    if (file.is_open())
+    {
+        file << gameData.score << endl;
+        file << gameData.playerName << endl;
+        // Add any other necessary game data to file
+        cout << "Game saved successfully." << endl;
+    }
+    else
+    {
+        cout << "Unable to save game." << endl;
+    }
+}
+
+// Function to load game data from a file
+GameData loadGame()
+{
+    GameData gameData;
+    ifstream file("saved_game.txt");
+    if (file.is_open())
+    {
+        file >> gameData.score;
+        file >> gameData.playerName;
+        // Load any other necessary game data from file
+        cout << "Game loaded successfully." << endl;
+    }
+    else
+    {
+        cout << "Unable to load game." << endl;
+    }
+    return gameData;
+}
+
+void save()
+{
+    // Initialize game data
+    GameData gameData{0, "Player1"};
+
+    // Play the game
+    while (true)
+    {
+        // Update game data as necessary
+        // ...
+
+        // Allow player to save or quit the game
+        cout << "Enter 's' to save the game or 'q' to quit: ";
+        char choice;
+        cin >> choice;
+        if (choice == 's')
+        {
+            saveGame(gameData);
+        }
+        else if (choice == 'q')
+        {
+            break; // End game
+        }
+    }
+
+    // Allow player to load saved game
+    cout << "Do you want to load a saved game? (y/n): ";
+    char choice;
+    cin >> choice;
+    if (choice == 'y')
+    {
+        cout << "Loading game..." << endl;
+        GameData loadedData = loadGame();
+        // Use loadedData to resume game
+        // ...
+    }
+    else
+    {
+        cout << "Starting new game..." << endl;
+        // Start a new game
+        // ...
+    }
+}
+
 int x;
 int y;
 int a_x;
@@ -220,6 +308,7 @@ void board()
 int main()
 {
 
+    save();
     srand(time(NULL));
     title();
     board();
@@ -228,90 +317,10 @@ int main()
 }
 
 
-// Define a struct to hold game data
-struct GameData
-{
-    int score;
-    string playerName;
-    // Add any other necessary game data
-};
 
-// Function to save game data to a file
-void saveGame(const GameData &gameData)
-{
-    ofstream file("saved_game.txt");
-    if (file.is_open())
-    {
-        file << gameData.score << endl;
-        file << gameData.playerName << endl;
-        // Add any other necessary game data to file
-        cout << "Game saved successfully." << endl;
-    }
-    else
-    {
-        cout << "Unable to save game." << endl;
-    }
-}
 
-// Function to load game data from a file
-GameData loadGame()
-{
-    GameData gameData;
-    ifstream file("saved_game.txt");
-    if (file.is_open())
-    {
-        file >> gameData.score;
-        file >> gameData.playerName;
-        // Load any other necessary game data from file
-        cout << "Game loaded successfully." << endl;
-    }
-    else
-    {
-        cout << "Unable to load game." << endl;
-    }
-    return gameData;
-}
 
-void save()
-{
-    // Initialize game data
-    GameData gameData{0, "Player1"};
 
-    // Play the game
-    while (true)
-    {
-        // Update game data as necessary
-        // ...
 
-        // Allow player to save or quit the game
-        cout << "Enter 's' to save the game or 'q' to quit: ";
-        char choice;
-        cin >> choice;
-        if (choice == 's')
-        {
-            saveGame(gameData);
-        }
-        else if (choice == 'q')
-        {
-            break; // End game
-        }
-    }
 
-    // Allow player to load saved game
-    cout << "Do you want to load a saved game? (y/n): ";
-    char choice;
-    cin >> choice;
-    if (choice == 'y')
-    {
-        cout << "Loading game..." << endl;
-        GameData loadedData = loadGame();
-        // Use loadedData to resume game
-        // ...
-    }
-    else
-    {
-        cout << "Starting new game..." << endl;
-        // Start a new game
-        // ...
-    }
-}
+
