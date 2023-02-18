@@ -147,7 +147,7 @@ void board()
             a_x = x / 2; // When the board is created with set dimensions, put the Alien in the middle of the board
             a_y = y / 2;
 
-            vector<string> objects = {"p", "h", "r", "<", ">", "^", "v", " ", " ", " ", " ", " ", " ", " ", " "};
+            vector<string> objects = {"p", "h", "r", "<", ">", "^", "v", "h", "r", " ", " ", " ", " ", " ", " "};
             shuffle(objects.begin(), objects.end(), default_random_engine(time(NULL))); // shuffle the objects
 
             // Create a 2D array to store the objects
@@ -224,7 +224,7 @@ void board()
                      << endl;
 
                 // Code for Alien movement
-                char move; 
+                char move;
                 cout << "Enter your move (w = up, s = down, a = left, d = right, q = quit)" << endl;
                 int x_coords = a_x + 1;
                 int y_coords = y - a_y;
@@ -233,38 +233,85 @@ void board()
 
                 if (move == 'w' && a_y > 0)
                 {
-                    // move Alien up
-                    boardObjects[a_y][a_x] = " "; // clear current position
-                    a_y--;
-                    boardObjects[a_y][a_x] = "A"; // update new position
-                    cout << "Moving Up!"<< endl;
+                    cout << "Moving Up!" << endl;
+
+                    for (int w = 0; a_y > 0; ++w)
+                    {
+                        if (boardObjects[a_y - 1][a_x] != "r") // check if the next position is a rock
+                        {
+                            // move Alien up
+                            boardObjects[a_y][a_x] = " "; // clear current position
+                            a_y--;
+                            boardObjects[a_y][a_x] = "A"; // update new position
+                        }
+
+                        else // stop moving if the next position is a rock
+
+                        {
+                            cout << "Ouchies! You hit a rock" << endl;
+                            break;
+                        }
+                    }
                 }
 
                 else if (move == 's' && a_y < y - 1)
                 {
-                    // move Alien down
-                    boardObjects[a_y][a_x] = " "; // clear current position
-                    a_y++;
-                    boardObjects[a_y][a_x] = "A"; // update new position
-                    cout << "Down We Go!"<< endl;
+                    cout << "Down We Go!" << endl;
+
+                    for (int s = 0; a_y < y - 1; ++s)
+                    {
+                        if (boardObjects[a_y + 1][a_x] != "r") // check if the next position is a rock
+                        {
+                            boardObjects[a_y][a_x] = " "; // clear current position
+                            a_y++;
+                            boardObjects[a_y][a_x] = "A"; // update new position
+                        }
+                        else // stop moving if the next position is a rock
+                        {
+                            cout << "Ouchies! You hit a rock" << endl;
+                            break;
+                        }
+                    }
                 }
 
                 else if (move == 'a' && a_x > 0)
                 {
-                    // move Alien left
-                    boardObjects[a_y][a_x] = " "; // clear current position
-                    a_x--;
-                    boardObjects[a_y][a_x] = "A"; // update new position
-                    cout << "Aye, aye! Left, Captain"<< endl;
+                    cout << "Aye, aye! Left, Captain" << endl;
+
+                    for (int a = 0; a_x > 0; ++a)
+                    {
+                        if (boardObjects[a_y][a_x - 1] != "r") // check if the next position is a rock
+                        {
+                            boardObjects[a_y][a_x] = " "; // clear current position
+                            a_x--;
+                            boardObjects[a_y][a_x] = "A"; // update new position
+                        }
+                        else // stop moving if the next position is a rock
+                        {
+                            cout << "Ouchies! You hit a rock" << endl;
+                            break;
+                        }
+                    }
                 }
 
                 else if (move == 'd' && a_x < x - 1)
                 {
-                    // move Alien right
-                    boardObjects[a_y][a_x] = " "; // clear current position
-                    a_x++;
-                    boardObjects[a_y][a_x] = "A"; // update new position
-                    cout << "Go Right, Cuz I'm Right!"<< endl;
+                    cout << "Go Right, Cuz You're Right!" << endl;
+
+                    for (int d = 0; a_x < x - 1; ++d)
+                    {
+                        if (boardObjects[a_y][a_x + 1] != "r") // check if the next position is a rock
+                        {
+                            boardObjects[a_y][a_x] = " "; // clear current position
+                            a_x++;
+                            boardObjects[a_y][a_x] = "A"; // update new position
+                        }
+                        else // stop moving if the next position is a rock
+                        {
+                            cout << "Ouchies! You hit a rock" << endl;
+                            break;
+                        }
+                    }
                 }
 
                 else if (move == 'q')
@@ -291,7 +338,7 @@ void board()
                 }
 
                 else
-                    cout << "Invalid move. Please try again." << endl;
+                    cout << "Invalid move. A warrior never leaves!" << endl;
                 system("pause");
 
                 system("cls");
@@ -315,12 +362,3 @@ int main()
 
     return 0;
 }
-
-
-
-
-
-
-
-
-
