@@ -149,6 +149,7 @@ void board()
                     boardObjects[a_y][a_x] = " "; // clear current position
                     a_y--;
                     boardObjects[a_y][a_x] = "A"; // update new position
+                    cout << "Moving Up!"<< endl;
                 }
 
                 else if (move == 's' && a_y < y - 1)
@@ -157,6 +158,7 @@ void board()
                     boardObjects[a_y][a_x] = " "; // clear current position
                     a_y++;
                     boardObjects[a_y][a_x] = "A"; // update new position
+                    cout << "Down We Go!"<< endl;
                 }
 
                 else if (move == 'a' && a_x > 0)
@@ -165,6 +167,7 @@ void board()
                     boardObjects[a_y][a_x] = " "; // clear current position
                     a_x--;
                     boardObjects[a_y][a_x] = "A"; // update new position
+                    cout << "Aye, aye! Left, Captain"<< endl;
                 }
 
                 else if (move == 'd' && a_x < x - 1)
@@ -173,6 +176,7 @@ void board()
                     boardObjects[a_y][a_x] = " "; // clear current position
                     a_x++;
                     boardObjects[a_y][a_x] = "A"; // update new position
+                    cout << "Go Right, Cuz I'm Right!"<< endl;
                 }
 
                 else if (move == 'q')
