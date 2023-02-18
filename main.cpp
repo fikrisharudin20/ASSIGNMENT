@@ -275,24 +275,28 @@ void saveGame(const GameData& gameData) {
 GameData loadGame() {
     GameData gameData;
     ifstream file("saved_game.txt");
-    if (file.is_open()) {
+    if (file.is_open()) 
+    {
         file >> gameData.score;
         file >> gameData.playerName;
         // Load any other necessary game data from file
         cout << "Game loaded successfully." << endl;
     }
-    else {
+    else 
+    {
         cout << "Unable to load game." << endl;
     }
     return gameData;
 }
 
-int main() {
+int main() 
+{
     // Initialize game data
     GameData gameData {0, "Player1"};
     
     // Play the game
-    while (true) {
+    while (true) 
+    {
         // Update game data as necessary
         // ...
         
@@ -300,10 +304,12 @@ int main() {
         cout << "Enter 's' to save the game or 'q' to quit: ";
         char choice;
         cin >> choice;
-        if (choice == 's') {
+        if (choice == 's') 
+        {
             saveGame(gameData);
         }
-        else if (choice == 'q') {
+        else if (choice == 'q') 
+        {
             break;  // End game
         }
     }
@@ -312,13 +318,15 @@ int main() {
     cout << "Do you want to load a saved game? (y/n): ";
     char choice;
     cin >> choice;
-    if (choice == 'y') {
+    if (choice == 'y') 
+    {
         cout << "Loading game..." << endl;
         GameData loadedData = loadGame();
         // Use loadedData to resume game
         // ...
     }
-    else {
+    else 
+    {
         cout << "Starting new game..." << endl;
         // Start a new game
         // ...
