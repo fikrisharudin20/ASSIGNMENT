@@ -2,7 +2,7 @@
 
 ## Video Demo
 
-Please provide the YouTube link to your [Video Demo](https://youtube.com).
+Please provide the YouTube link to your [Video Demo](https://www.youtube.com/watch?v=sMZJ0xintl8).
 
 ## Minimum Requirements
 
@@ -64,3 +64,6 @@ Describe the problems encountered and provide the solutions / plan for the solut
 
 Solution : Creating Vector for Alien Placement
            Coordinates System
+
+2. The Zombie seem to not load on certain board dimensions, we tried our best to figure out and tried everything to figure out for the solution.
+Nontheless, The game is still playable.
