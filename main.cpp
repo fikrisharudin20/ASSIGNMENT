@@ -20,13 +20,21 @@
 
 using namespace std;
 
+
 // Define a struct to hold game data
 struct GameData
 {
     int score;
     string playerName;
-    // Add any other necessary game data
+    
 };
+
+struct Zombie {
+    int x;
+    int y;
+    int health;
+};
+
 
 // Function to save game data to a file
 void saveGame(const GameData &gameData)
@@ -113,6 +121,7 @@ int y;
 int a_x;
 int a_y;
 int alien_health = 100;
+int alien_damage = 0;
 
 void title() // Creating the title of the game
 {
@@ -126,6 +135,7 @@ void title() // Creating the title of the game
 
 void board()
 {
+    vector<Zombie> zombies;
 
     cout << "Hello aliens! set your rows and columns (odd numbers only)" << endl;
 
@@ -158,19 +168,26 @@ void board()
             {
                 boardObjects[i] = new string[x];
             }
+            
 
             for (int i = 0; i < y; i++)
             {
                 for (int j = 0; j < x; j++)
                 {
-                    if (i == a_y && j == a_x)
+                    if (i == a_y && j == a_x) 
+                    {
                         boardObjects[i][j] = "A"; // Put alien in the middle of the board
+                    }
                     else
                     {
                         boardObjects[i][j] = objects[(i * x + j) % objects.size()]; // get the object at a specific index in the shuffled objects vector
                     }
+                    
+
                 }
             }
+
+            
 
             while (true)
             {
@@ -224,40 +241,56 @@ void board()
                 cout << endl
                      << endl;
 
-                
                 // Code for Alien movement and for board objects
-                
+
                 int alien_new_health = alien_health;
-                int alien_damage = 0;
-                  cout << "Alien Health (" << alien_new_health << ")"
+                cout << "|| "
+                     << "Alien Health (" << alien_new_health << ")"
+                     << "  ||"
                      << "  "
-                     << "Alien Damage (" << alien_damage << ")" << endl;
-               
-                
+                     << "Alien Damage (" << alien_damage << ")"
+                     << " || " << endl;
+                cout << " " << endl;
+
                 char move;
-                cout << "Enter your move (w = up, s = down, a = left, d = right, q = quit)" << endl;
+                cout << "|| Enter your move (w = up, s = down, a = left, d = right, q = quit) ||" << endl;
+                cout << " " << endl;
                 int x_coords = a_x + 1;
                 int y_coords = y - a_y;
-                cout << "Alien is now at (" << x_coords << ", " << y_coords << ")" << endl;
+                cout << "|| Alien is now at (" << x_coords << ", " << y_coords << ") ||" << endl;
                 cin >> move;
 
                 if (move == 'w' && a_y > 0)
                 {
+                    // Check for arrow
+                    if (boardObjects[a_y - 1][a_x] == ">")
+                    {
+                        move = 'd'; // Change direction to right
+                    }
+                    else if (boardObjects[a_y - 1][a_x] == "<")
+                    {
+                        move = 'a'; // Change direction to left
+                    }
+                    else if (boardObjects[a_y - 1][a_x] == "v")
+                    {
+                        move = 's'; // Change direction to down
+                    }
+
                     cout << "Moving Up!" << endl;
 
                     for (int w = 0; a_y > 0; ++w)
                     {
+
                         if (boardObjects[a_y - 1][a_x] != "r") // check if the next position is a rock
                         {
                             if (boardObjects[a_y - 1][a_x] == "h") // check if the next position is a health object
                             {
                                 if (alien_health < 100)
                                 {
-                                 alien_health += 20; // increase alien health by 20
-                                 int alien_new_health = alien_health;
-                                 cout << "Alien gained 20 health points!" << endl;
+                                    alien_health += 20; // increase alien health by 20
+                                    int alien_new_health = alien_health;
+                                    cout << "Alien gained 20 health points!" << endl;
                                 }
-                                
                             }
                             // move Alien up
                             boardObjects[a_y][a_x] = " "; // clear current position
@@ -275,6 +308,20 @@ void board()
 
                 else if (move == 's' && a_y < y - 1)
                 {
+                    // Check for arrow
+                    if (boardObjects[a_y + 1][a_x] == ">")
+                    {
+                        move = 'd'; // Change direction to right
+                    }
+                    else if (boardObjects[a_y + 1][a_x] == "<")
+                    {
+                        move = 'a'; // Change direction to left
+                    }
+                    else if (boardObjects[a_y + 1][a_x] == "^")
+                    {
+                        move = 'w'; // Change direction to up
+                    }
+
                     cout << "Down We Go!" << endl;
 
                     for (int s = 0; a_y < y - 1; ++s)
@@ -285,9 +332,9 @@ void board()
                             {
                                 if (alien_health < 100)
                                 {
-                                 alien_health += 20; // increase alien health by 20
-                                int alien_new_health = alien_health;
-                                cout << "Alien gained 20 health points!" << endl;
+                                    alien_health += 20; // increase alien health by 20
+                                    int alien_new_health = alien_health;
+                                    cout << "Alien gained 20 health points!" << endl;
                                 }
                             }
 
@@ -305,6 +352,19 @@ void board()
 
                 else if (move == 'a' && a_x > 0)
                 {
+                    // Check for arrow
+                    if (boardObjects[a_y][a_x - 1] == "v")
+                    {
+                        move = 's'; // Change direction to down
+                    }
+                    else if (boardObjects[a_y][a_x - 1] == "^")
+                    {
+                        move = 'w'; // Change direction to up
+                    }
+                    else if (boardObjects[a_y][a_x - 1] == ">")
+                    {
+                        move = 'd'; // Change direction to right
+                    }
                     cout << "Aye, aye! Left, Captain" << endl;
 
                     for (int a = 0; a_x > 0; ++a)
@@ -315,9 +375,9 @@ void board()
                             {
                                 if (alien_health < 100)
                                 {
-                                 alien_health += 20; // increase alien health by 20
-                                int alien_new_health = alien_health;
-                                cout << "Alien gained 20 health points!" << endl;
+                                    alien_health += 20; // increase alien health by 20
+                                    int alien_new_health = alien_health;
+                                    cout << "Alien gained 20 health points!" << endl;
                                 }
                             }
 
@@ -335,6 +395,20 @@ void board()
 
                 else if (move == 'd' && a_x < x - 1)
                 {
+                    // Check for arrow
+                    if (boardObjects[a_y][a_x + 1] == "v")
+                    {
+                        move = 's'; // Change direction to down
+                    }
+                    else if (boardObjects[a_y][a_x + 1] == "^")
+                    {
+                        move = 'w'; // Change direction to up
+                    }
+                    else if (boardObjects[a_y][a_x + 1] == "<")
+                    {
+                        move = 'a'; // Change direction to left
+                    }
+
                     cout << "Go Right, Cuz You're Right!" << endl;
 
                     for (int d = 0; a_x < x - 1; ++d)
@@ -345,9 +419,9 @@ void board()
                             {
                                 if (alien_health < 100)
                                 {
-                                 alien_health += 20; // increase alien health by 20
-                                int alien_new_health = alien_health;
-                                cout << "Alien gained 20 health points!" << endl;
+                                    alien_health += 20; // increase alien health by 20
+                                    int alien_new_health = alien_health;
+                                    cout << "Alien gained 20 health points!" << endl;
                                 }
                             }
 
@@ -400,8 +474,6 @@ void board()
         system("pause");
     }
 }
-
-
 
 int main()
 {
