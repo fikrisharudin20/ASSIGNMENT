@@ -81,15 +81,15 @@ void save()
     while (true)
     {
         // Update game data as necessary
-        // ...
 
         // Allow player to save or quit the game
-        cout << "Enter 's' to save the game or 'q' to quit: ";
+        cout << "Enter 's' to start and record your profile or 'q' to load existing save file: ";
         char choice;
         cin >> choice;
         if (choice == 's')
         {
             saveGame(gameData);
+            false;
         }
         else if (choice == 'q')
         {
@@ -105,23 +105,25 @@ void save()
     {
         cout << "Loading game..." << endl;
         GameData loadedData = loadGame();
-        // Use loadedData to resume game
-        // ...
+        
     }
     else
     {
         cout << "Starting new game..." << endl;
         // Start a new game
-        // ...
+        
     }
 }
 
-int x;
-int y;
+int x = 9;
+int y = 5;
 int a_x;
 int a_y;
 int alien_health = 100;
 int alien_damage = 0;
+int zombie_count = 1;
+int z,z_loc1,z_loc2;
+int zombie_life[9],zombie_attack[9],zombie_range[9];
 
 void title() // Creating the title of the game
 {
@@ -135,15 +137,29 @@ void title() // Creating the title of the game
 
 void board()
 {
-    vector<Zombie> zombies;
-
-    cout << "Hello aliens! set your rows and columns (odd numbers only)" << endl;
-
+    char option;
+    cout<<"Default Board Settings:"<<endl;
+    cout<<"-----------------------"<<endl;
+    cout<<"Board Rows     :"<<y<<endl;
+    cout<<"Board Columns  :"<<x<<endl;
+    cout<<"Zombie Count   :"<<zombie_count<<endl;
+    cout<<"Do you wish to change the game settings (y/n)? =>";
+    cin>>option;
+   
+    z_loc1 = rand() % y ;
+    z_loc2 = rand() % x -2;
     char again = 'Y';
+
+    
+
+    
 
     while (again == 'y' || again == 'Y') // A while-loop to create the board
     {
-
+       if(option == 'Y' || option == 'y')
+       {
+        
+        cout << "Hello aliens! set your rows and columns (odd numbers only)" << endl;
         cout << "Row => "; // Initializing the dimensions of the board set by user's input
         cin >> y;
         cout << "" << endl;
@@ -151,12 +167,24 @@ void board()
         cout << "Column => ";
         cin >> x;
         cout << "" << endl;
+        cout << "Enter the number of zombies => ";
+        cin >> zombie_count;
+        cout << "" << endl;
+       }
+        for(int i = 0;i<zombie_count;i++)
+            {
+                zombie_life[i] = rand() %100 + 1;
+                zombie_attack[i] = rand() %100 + 1;
+                zombie_range[i] = rand() %5 +1;
+            }
+        
 
-        if (x, y % 2 != 0) // Inside of while-loop there is an if else statement if the user inputs even numbers for the dimensions of the board
+        if (x, y % 2 != 0 && zombie_count >= 1 && zombie_count <=9 ) // Inside of while-loop there is an if else statement if the user inputs even numbers for the dimensions of the board
         {
             again = 'N';
             a_x = x / 2; // When the board is created with set dimensions, put the Alien in the middle of the board
             a_y = y / 2;
+            z = 1;
 
             vector<string> objects = {"p", "h", "r", "<", ">", "^", "v", "h", "r", " ", " ", " ", " ", " ", " "};
             shuffle(objects.begin(), objects.end(), default_random_engine(time(NULL))); // shuffle the objects
@@ -178,10 +206,13 @@ void board()
                     {
                         boardObjects[i][j] = "A"; // Put alien in the middle of the board
                     }
+
+                    
                     else
                     {
                         boardObjects[i][j] = objects[(i * x + j) % objects.size()]; // get the object at a specific index in the shuffled objects vector
                     }
+                    
                     
 
                 }
@@ -207,7 +238,22 @@ void board()
                     for (int j = 0; j < x; ++j)
                     {
 
+                        
+
+                        if (row == z_loc1 && j ==z_loc2 && z <= zombie_count)
+                        {
+                            cout << "|"<< z;
+                            z_loc1 = row + 1;
+                            z_loc2 --;
+                            z++;
+                            
+                        }
+
+
+                      else
                         cout << "|" << boardObjects[row][j];
+
+                        
                     }
                     cout << "|" << endl;
                 }
@@ -250,7 +296,10 @@ void board()
                      << "  "
                      << "Alien Damage (" << alien_damage << ")"
                      << " || " << endl;
-                cout << " " << endl;
+                for(int i = 0;i<zombie_count;i++)
+                    {
+                        cout<<"|| Zombie "<<i+1 <<": Life "<<zombie_life[i]<<", Attack  "<<zombie_attack[i]<<", Range "<<zombie_range[i] << "||" << endl;
+                    }
 
                 char move;
                 cout << "|| Enter your move (w = up, s = down, a = left, d = right, q = quit) ||" << endl;
